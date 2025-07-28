@@ -7,6 +7,9 @@ To train your own model, you can use rcnn_script_model.py.
 
 In the repository https://github.com/danielhl96/Dataset-AI, you’ll find a script to create your own dataset.
 
+# Installation
+pip install -r requirements.txt
+
 # Training
 
 c and b: False means that the entire model will be trained.
