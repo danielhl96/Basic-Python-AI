@@ -58,9 +58,4 @@ def rcnn(img):
     for elem in indices:
         d = {"coords": list_cord[elem],"confidence": confidences[elem]}
         result.append(d)
-    for elem in list_cord:
-        cv2.rectangle(img, (int(elem[0]), int(elem[1])), (int(elem[2]), int(elem[3])),(0, 255, 0), 3)
-    cv2.imshow("Output", img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows() 
     return result
