@@ -1,7 +1,7 @@
 # Basic-Python-AI
 A fundamental Python repository includes Keras and other AI technologies.
 
-In the file example.py, you can see how to use the rcnn. By the way, rcnn.py is the script that runs the model.
+In the file example.py, you can see how to use the rcnn. By the way, rcnn_script_model.py is the script that runs the model.
 
 To train your own model, you can use rcnn_model.py.
 
