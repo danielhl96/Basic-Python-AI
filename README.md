@@ -9,4 +9,5 @@ In the repository https://github.com/danielhl96/Dataset-AI, you’ll find a scri
 
 # Training
 c and b: False means that the entire model will be trained.
+
 python3 rcnn_script_model.py -t "path/train.txt" -v "pathvali.txt" -c false -b false
