@@ -2,7 +2,7 @@ from rcnn import rcnn
 from image_ops import load_image
 import cv2
 
-img = load_image("00-924050_01__1200x1200.jpg",500,500)
+img = load_image("example.jpg",500,500)
 
 result = rcnn(img)
 print(result)
