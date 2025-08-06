@@ -3,13 +3,23 @@ from tensorflow.keras.models import load_model
 import cv2
 import imutils
 import numpy as np
+import os
+import gdown
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing.image import load_img
 from image_ops import crop_image, load_image
 
 
 def rcnn(img):
-    model = load_model("my_model.keras")
+    if os.path.isfile("my_model.keras"):
+        model_path = os.path.join(os.getcwd(), "my_model.keras")
+        model = load_model(model_path)
+    else:
+        url = "https://drive.google.com/uc?id=10bQpfZCHUWiyq0bmDI1lRwhW4EJ6yQwH"
+        output = "my_model.keras"
+        gdown.download(url, output)
+        model_path = os.path.join(os.getcwd(), "my_model.keras")
+        model = load_model(model_path)
     
     #Create ROI`s `
     img_list = []
