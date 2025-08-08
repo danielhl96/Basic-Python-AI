@@ -1,26 +1,31 @@
-import tensorflow as tf
-from tensorflow.keras.models import load_model
-import cv2
-import imutils
+from keras.models import load_model
+from keras.utils import load_img, img_to_array
 import numpy as np
+import cv2
 import os
 import gdown
-from tensorflow.keras.preprocessing.image import img_to_array
-from tensorflow.keras.preprocessing.image import load_img
 from image_ops import crop_image, load_image
 
+base_dir = os.path.dirname(os.path.abspath(__file__))  # Ordner, in dem rcnn.py liegt
+model_path = os.path.join(base_dir, "my_model.keras")
+
+if os.path.isfile(model_path):
+    print("Model found at:", model_path)
+    model = load_model(model_path)
+else:
+    print("Model not found. Downloading...")
+    url = "https://drive.google.com/uc?id=1M8wJQ1mXQvl_xyU91YqFbQemiZNcpfjW"
+    gdown.download(url, model_path)
+    model = load_model(model_path)
 
 def rcnn(img):
-    if os.path.isfile("my_model.keras"):
-        model_path = os.path.join(os.getcwd(), "my_model.keras")
-        model = load_model(model_path)
-    else:
-        url = "https://drive.google.com/uc?id=10bQpfZCHUWiyq0bmDI1lRwhW4EJ6yQwH"
-        output = "my_model.keras"
-        gdown.download(url, output)
-        model_path = os.path.join(os.getcwd(), "my_model.keras")
-        model = load_model(model_path)
-    
+
+    print("Current working dir:", os.getcwd())
+    print("DEBUG:")
+    print("base_dir:", base_dir)
+    print("model_path:", model_path)
+    print("File exists:", os.path.isfile(model_path))
+
     #Create ROI`s `
     img_list = []
     
